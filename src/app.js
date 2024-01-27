@@ -14,14 +14,17 @@ const mode = process.env.NODE_ENV || 'development';
 const server = async () => {
   try {
     if (mode === 'development') {
+      console.log(process.env.PROD_DB, process.env.DEV_DB, 'IN DEVELOPMENT');
       await mongoose.connect(process.env.DEV_DB, {
         useNewUrlParser: true,
       });
     } else if (mode === 'test') {
+      console.log(process.env.PROD_DB, process.env.DEV_DB, 'IN TEST');
       await mongoose.connect(process.env.TEST_DB, {
         useNewUrlParser: true,
       });
     } else if (mode === 'production') {
+      console.log(process.env.PROD_DB, process.env.DEV_DB, 'IN PRODUCTION');
       await mongoose.connect(process.env.PROD_DB, {
         useNewUrlParser: true,
       });
